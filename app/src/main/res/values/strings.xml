@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">mythirdapp</string>
+    <string name="number">Hello</string>
+    <string name="dollar">DOLLAR</string>
+    <string name="euro">EURO</string>
+    <string name="won">WON</string>
+    <string name="config">CONFIG</string>
+    <string name="save">SAVE</string>
+</resources>
