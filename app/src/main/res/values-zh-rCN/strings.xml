@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">我的应用</string>
+    <string name="add1score">加1分</string>
+    <string name="add2score">加2分</string>
+    <string name="add3score">加3分</string>
+    <string name="config">设置</string>
+    <string name="dollar">美元</string>
+    <string name="euro">"欧元 "</string>
+    <string name="number">数字</string>
+    <string name="res_txt">结果</string>
+    <string name="save">保存</string>
+    <string name="submit">提交</string>
+    <string name="teamNamea">A队</string>
+    <string name="teamNameb">B队</string>
+    <string name="won">韩元</string>
+    <string name="rate">汇率</string>
+    <string name="money">币种</string>
+</resources>

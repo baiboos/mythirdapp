@@ -6,4 +6,13 @@
     <string name="won">WON</string>
     <string name="config">CONFIG</string>
     <string name="save">SAVE</string>
+    <string name="submit">SUBMIT</string>
+    <string name="res_txt">Result:</string>
+    <string name="teamNamea">TeamA</string>
+    <string name="teamNameb">TeamB</string>
+    <string name="add2score">+2 POINTS</string>
+    <string name="add3score">+3 POINTS</string>
+    <string name="add1score">+1 POINT</string>
+    <string name="rate">RATE</string>
+    <string name="money">MONEY</string>
 </resources>

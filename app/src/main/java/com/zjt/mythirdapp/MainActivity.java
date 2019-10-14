@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,8 +13,10 @@ import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import org.jsoup.Jsoup;
@@ -24,6 +27,9 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.lang.annotation.Documented;
+import java.util.ArrayList;
+import java.util.List;
+
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, Runnable {
@@ -70,7 +76,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public  void handleMessage(Message msg){
                 if(msg.what==5){
-                    float rates[]= (float[])msg.obj;
+                    float[] rates = (float[])msg.obj;
+
                     dollar_rate=rates[0];
                     euro_rate=rates[1];
                     won_rate=rates[2];
@@ -146,6 +153,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }*/
         float dol=0f,eur=0f,won=0f;
+
         try{
             String url="http://www.usd-cny.com/";
             Document doc= Jsoup.connect(url).get();
@@ -160,7 +168,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String name=td1.text();
                 String value=td2.text();
 
+
                 Log.i("结果","run:  "+name + "==>"+value);
+
 
                 if(name.equals("美元")){
                     dol=Float.parseFloat(value);
@@ -177,6 +187,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }catch (IOException e){
 
         }
+
+
+
+
 
         float rate[] = new float[3];
         rate[0]=dol;
