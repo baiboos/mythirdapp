@@ -3,6 +3,7 @@ package com.zjt.mythirdapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ListActivity;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -38,9 +39,11 @@ public class rateList2Activity extends ListActivity implements Runnable{
             @Override
             public  void handleMessage(Message msg){
                 if(msg.what==5){
-                    List<HashMap<String,String>> listItems = ( List<HashMap<String,String>>)msg.obj;
-                    ListAdapter adapter=new SimpleAdapter(rateList2Activity.this,listItems,R.layout.list_item,new String[]{"ItemName","ItemValue"},new int[]{R.id.ItemTitle, R.id.ItemDetail});
-                    setListAdapter(adapter);
+                    ArrayList<HashMap<String,String>> listItems = ( ArrayList<HashMap<String,String>>)msg.obj;
+                    /*ListAdapter adapter=new SimpleAdapter(rateList2Activity.this,listItems,R.layout.list_item,new String[]{"ItemName","ItemValue"},new int[]{R.id.ItemTitle, R.id.ItemDetail});
+                    setListAdapter(adapter);*/
+                    MyAdapter myAdapter = new MyAdapter(rateList2Activity.this,R.layout.list_item,listItems);
+                    setListAdapter(myAdapter);
 
 
                 }
@@ -90,3 +93,4 @@ public class rateList2Activity extends ListActivity implements Runnable{
     }
 
 }
+
