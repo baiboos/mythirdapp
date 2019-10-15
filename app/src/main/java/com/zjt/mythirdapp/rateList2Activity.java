@@ -4,13 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -22,9 +28,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class rateList2Activity extends ListActivity implements Runnable{
+public class rateList2Activity extends ListActivity implements Runnable, AdapterView.OnItemClickListener {
     Handler handler;
-
+    private static final String TAG="ITEMCLICK";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +50,7 @@ public class rateList2Activity extends ListActivity implements Runnable{
                     setListAdapter(adapter);*/
                     MyAdapter myAdapter = new MyAdapter(rateList2Activity.this,R.layout.list_item,listItems);
                     setListAdapter(myAdapter);
+                    getListView().setOnItemClickListener(rateList2Activity.this);
 
 
                 }
@@ -89,6 +96,34 @@ public class rateList2Activity extends ListActivity implements Runnable{
         Message msg=handler.obtainMessage(5);
         msg.obj=list1;
         handler.sendMessage(msg);
+
+    }
+
+    public void onItemClick(AdapterView<?>parent, View view, int position, long id){
+        Object itemAtPosition = getListView().getItemAtPosition(position);
+        HashMap<String,String> map=(HashMap<String,String>)itemAtPosition;
+        String titleStr = map.get("ItemName");
+        String detailStr = map.get("ItemValue");
+        Log.i(TAG,"onItemClick: titleStr="+titleStr);
+        Log.i(TAG,"onItemClick: detailStr="+detailStr);
+
+        TextView title=(TextView)view.findViewById(R.id.ItemTitle);
+        TextView detail=(TextView)view.findViewById(R.id.ItemDetail);
+
+        String title2 = String.valueOf(title.getText());
+        String detail2 = String.valueOf(detail.getText());
+
+        Log.i(TAG,"onItemClick: title2="+title2);
+        Log.i(TAG,"onItemClick: detail2="+detail2);
+
+        Intent calcu=new Intent(this,calcuRateActivity.class);
+        calcu.putExtra("name_key",title2);
+        calcu.putExtra("rate_key",detail2);
+
+        startActivity(calcu);
+
+
+
 
     }
 
