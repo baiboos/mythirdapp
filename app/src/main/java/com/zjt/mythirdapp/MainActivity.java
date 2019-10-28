@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
+
         rmb=findViewById(R.id.editText);
         res=findViewById(R.id.textView);
         btnd=findViewById(R.id.button);
