@@ -10,7 +10,7 @@
     <string name="number">数字</string>
     <string name="res_txt">结果</string>
     <string name="save">保存</string>
-    <string name="submit">提交</string>
+    <string name="reset">重置</string>
     <string name="teamNamea">A队</string>
     <string name="teamNameb">B队</string>
     <string name="won">韩元</string>
